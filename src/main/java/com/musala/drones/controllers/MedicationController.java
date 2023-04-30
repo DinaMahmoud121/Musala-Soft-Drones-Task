@@ -1,6 +1,5 @@
 package com.musala.drones.controllers;
 
-
 import com.musala.drones.dto.MedicationDTO;
 import com.musala.drones.service.MedicationService;
 import org.springframework.beans.factory.annotation.Autowired;

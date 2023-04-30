@@ -36,7 +36,7 @@ public class APIControllerAdvisor extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(DroneLimitWeightExceeded.class)
-    public ResponseEntity<Object> handleDDroneMaxWeightExceededException(DroneLimitWeightExceeded ex) {
+    public ResponseEntity<Object> handleDroneMaxWeightExceededException(DroneLimitWeightExceeded ex) {
 
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("timestamp", LocalDateTime.now());
@@ -64,6 +64,5 @@ public class APIControllerAdvisor extends ResponseEntityExceptionHandler {
 
         return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
     }
-
 
 }

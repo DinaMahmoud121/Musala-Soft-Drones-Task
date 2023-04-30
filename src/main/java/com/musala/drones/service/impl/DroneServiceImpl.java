@@ -1,6 +1,5 @@
 package com.musala.drones.service.impl;
 
-
 import com.musala.drones.constants.enums.State;
 import com.musala.drones.dto.DroneDTO;
 import com.musala.drones.dto.MedicationDTO;
@@ -22,27 +21,22 @@ import java.util.Optional;
 public class DroneServiceImpl implements DroneService {
 
     @Autowired
-    public DroneRepository droneRepository;
+    private DroneRepository droneRepository;
 
     @Autowired
     private MedicationRepository medicationRepository;
 
 
     @Override
-    public DroneDTO registerDrone(DroneDTO newDrone) throws DronesLimitReached {
-        int dronesCount = droneRepository.findAll().size();
-        if (dronesCount >= 10) {
-            throw new DronesLimitReached();
-        }
-        Drone droneEntity = new Drone(
-                newDrone.getSerialNumber(),
-                newDrone.getModel(),
-                newDrone.getWeightLimit(),
-                newDrone.getBatteryCapacity(),
+    public DroneDTO registerDrone(DroneDTO droneDTO) {
+        Drone drone = new Drone(
+                droneDTO.getSerialNumber(),
+                droneDTO.getModel(),
+                droneDTO.getWeightLimit(),
+                droneDTO.getBatteryCapacity(),
                 State.IDLE);
-        droneRepository.save(droneEntity);
-        newDrone.setState(State.IDLE);
-        return newDrone;
+        droneRepository.save(drone);
+        return droneDTO;
     }
 
     @Override
@@ -145,5 +139,6 @@ public class DroneServiceImpl implements DroneService {
                 .medications(this.mapMedicationToMedicationDTO(drone.getMedications()))
                 .build();
     }
+
 }
 

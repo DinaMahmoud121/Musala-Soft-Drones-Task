@@ -1,6 +1,5 @@
 package com.musala.drones.service.impl;
 
-
 import com.musala.drones.model.BatteryEventLogs;
 import com.musala.drones.model.Drone;
 import com.musala.drones.repository.BatteryEventLogRepository;
@@ -43,7 +42,6 @@ public class BatteryEventSchedulerImpl implements BatteryEventScheduler {
 
 	@Override
 	public List<BatteryEventLogs> getBatteryEventLogs() {
-
 		return eventLogRepo.findAll();
 	}
 

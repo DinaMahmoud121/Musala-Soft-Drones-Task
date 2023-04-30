@@ -1,6 +1,5 @@
 package com.musala.drones.repository;
 
-
 import com.musala.drones.model.BatteryEventLogs;
 import org.springframework.data.jpa.repository.JpaRepository;
 

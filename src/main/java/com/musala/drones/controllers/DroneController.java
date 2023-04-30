@@ -1,9 +1,7 @@
 package com.musala.drones.controllers;
 
-
 import com.musala.drones.dto.DroneDTO;
 import com.musala.drones.dto.MedicationDTO;
-import com.musala.drones.exceptions.DronesLimitReached;
 import com.musala.drones.service.DroneService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +23,8 @@ public class DroneController {
         return ResponseEntity.ok(droneService.getDroneBySerialNumber(serialNumber));
     }
 
-    @PostMapping(value = {"", "/"}, consumes = "application/json")
-    public ResponseEntity<DroneDTO> registerDrone(@Valid @RequestBody DroneDTO droneDTO) throws DronesLimitReached {
+    @PostMapping(consumes = "application/json")
+    public ResponseEntity<DroneDTO> registerDrone(@Valid @RequestBody DroneDTO droneDTO) {
         return ResponseEntity.status(HttpStatus.CREATED).body(droneService.registerDrone(droneDTO));
     }
 

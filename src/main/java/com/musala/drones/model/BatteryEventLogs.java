@@ -17,7 +17,7 @@ public class BatteryEventLogs {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
     private String serialNumber;
 

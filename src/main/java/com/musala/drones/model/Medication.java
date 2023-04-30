@@ -24,7 +24,7 @@ public class Medication {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
     @Column(unique = true)
     @Pattern(regexp = "^[A-Za-z0-9_-]*$")
@@ -42,5 +42,12 @@ public class Medication {
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
     @JsonIdentityReference(alwaysAsId = true)
     private Drone drone;
+
+    public Medication(String name, double weight, String code, String image) {
+        this.name = name;
+        this.weight = weight;
+        this.code = code;
+        this.image = image;
+    }
 
 }

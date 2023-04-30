@@ -15,6 +15,7 @@ import jakarta.persistence.FetchType;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
@@ -25,11 +26,12 @@ import java.util.List;
 @Table(name = "DRONE")
 @Data
 @NoArgsConstructor
-public class Drone {
+@AllArgsConstructor
+public class Drone extends Throwable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
     @Column(unique = true)
     @Length(max = 100)
@@ -51,6 +53,15 @@ public class Drone {
     private State state;
 
     @OneToMany(mappedBy = "drone", fetch = FetchType.LAZY)
-    private List<Medication> medication;
+    private List<Medication> medications;
+
+    public Drone(String serialNumber, Model model, double weightLimit, int batteryCapacity, State state) {
+
+        this.weightLimit = weightLimit;
+        this.batteryCapacity = batteryCapacity;
+        this.state = state;
+        this.serialNumber = serialNumber;
+        this.model = model;
+    }
 
 }

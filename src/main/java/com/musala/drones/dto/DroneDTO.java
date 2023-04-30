@@ -17,9 +17,9 @@ import org.hibernate.validator.constraints.Range;
 import java.util.List;
 
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class DroneDTO {
 
     @JsonProperty
